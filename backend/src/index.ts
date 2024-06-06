@@ -6,6 +6,9 @@ import logger from 'morgan';
 import { connectCassandraDB } from './db/cassandra/connect/connect.cassandra.db.ts';
 import cookieParser from 'cookie-parser';
 
+// import routers
+import { realEstateRouter } from './routers/realEstate.routes.ts';
+
 dotenv.config();
 
 const app = express();
@@ -21,6 +24,8 @@ app.use(cors());
 app.get('/', (req, res) => {
     res.send('hi');
 });
+
+app.use("/api/realEstate",realEstateRouter);
 
 const PORT = process.env.PORT || 3000;
 
