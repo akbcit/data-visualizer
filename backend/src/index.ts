@@ -3,14 +3,14 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import logger from 'morgan';
-import { connectMongoDb } from './db/mongoDB/connect/connect.mongoDB.db.ts';
+import { connectCassandraDB } from './db/cassandra/connect/connect.cassandra.db.ts';
 import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
 const app = express();
 
-await connectMongoDb();
+await connectCassandraDB();
 
 app.use(logger('combined'));
 app.use(bodyParser.urlencoded({ extended: true }));
